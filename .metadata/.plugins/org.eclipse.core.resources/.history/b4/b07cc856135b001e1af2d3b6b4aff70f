@@ -1,0 +1,27 @@
+{"properties": [
+  {
+    "name": "name",
+    "type": "java.lang.String",
+    "description": "A description for 'name'"
+  },
+  {
+    "name": "application",
+    "type": "java.lang.String",
+    "description": "A description for 'application'"
+  },
+  {
+    "name": "basic",
+    "type": "java.lang.String",
+    "description": "A description for 'basic'"
+  },
+  {
+    "name": "security",
+    "type": "java.lang.String",
+    "description": "A description for 'security'"
+  },
+  {
+    "name": "enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'enabled'"
+  }
+]}
