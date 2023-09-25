@@ -17,7 +17,7 @@ public class MsGatewayApplication {
 		SpringApplication.run(MsGatewayApplication.class, args);
 	}
 	
-	
+	//
 	@Bean
 	public RouteLocator routes(RouteLocatorBuilder builder){
 		return  builder
