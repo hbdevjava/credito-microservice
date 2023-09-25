@@ -43,13 +43,13 @@ public class CartoesController {
 	
 	//-> LISTA DE CARTOES CORRESPONDENTE COM A RENDA DO CLIENTE 
 	//-> (ex: RENDA ATE 5K ELE VAI LISTAR CARTOES COM ESSA RENDA ATE 5K)
-		@GetMapping(params = "/renda")
+		@GetMapping(params = "renda")
 		public ResponseEntity<List<Cartao>> getCartoesRendaAteh(@RequestParam Long renda){
 			List<Cartao> list = service.getCartaoRendaMenorIgual(renda);
 			return ResponseEntity.ok(list);
 		}
 		
-		@GetMapping(params = "/cpf")
+		@GetMapping(params = "cpf")
 		public ResponseEntity<List<CartaoPorClienteResponse>> getCartoesByCliente(@RequestParam("cpf")  String cpf){
 			List<ClienteCartao> lista = cartaoService.listaCartaoByCpf(cpf);
 			List<CartaoPorClienteResponse> resultList = lista.stream()
