@@ -38,5 +38,20 @@
     "name": "serve.hostname",
     "type": "java.lang.String",
     "description": "A description for 'serve.hostname'"
+  },
+  {
+    "name": "eureka.spring.datasource.spring.jpa.hibernate",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka.spring.datasource.spring.jpa.hibernate'"
+  },
+  {
+    "name": "eureka.client.eureka-service-url-defaultZone",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka.client.eureka-service-url-defaultZone'"
+  },
+  {
+    "name": "eureka.instance-id",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka.instance-id'"
   }
 ]}

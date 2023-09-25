@@ -10,6 +10,7 @@ import io.hbdev.msclientes.domain.Cliente;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 
-	Optional<Cliente> findById(String cpf);
+	
+	Optional<Cliente> findByCpf(String cpf);
 
 }
