@@ -14,14 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.hbdev.mscartoes.application.representation.CartaoPorClienteResponse;
 import io.hbdev.mscartoes.application.representation.CartaoSaveRequest;
 import io.hbdev.mscartoes.domain.Cartao;
+import io.hbdev.mscartoes.domain.ClienteCartao;
 @RestController
 @RequestMapping("/api/cartoes")
 public class CartoesController {
 	
 	@Autowired
 	private CartaoService service;
+	
+	@Autowired
+	private ClienteCartaoService cartaoService;
 	
 	@GetMapping
     public String status(){
@@ -36,5 +41,22 @@ public class CartoesController {
 		
 	}	
 	
-
+	//-> LISTA DE CARTOES CORRESPONDENTE COM A RENDA DO CLIENTE 
+	//-> (ex: RENDA ATE 5K ELE VAI LISTAR CARTOES COM ESSA RENDA ATE 5K)
+		@GetMapping(params = "/renda")
+		public ResponseEntity<List<Cartao>> getCartoesRendaAteh(@RequestParam Long renda){
+			List<Cartao> list = service.getCartaoRendaMenorIgual(renda);
+			return ResponseEntity.ok(list);
+		}
+		
+		@GetMapping(params = "/cpf")
+		public ResponseEntity<List<CartaoPorClienteResponse>> getCartoesByCliente(@RequestParam("cpf")  String cpf){
+			List<ClienteCartao> lista = cartaoService.listaCartaoByCpf(cpf);
+			List<CartaoPorClienteResponse> resultList = lista.stream()
+					.map(CartaoPorClienteResponse::fromModel)
+					.collect(Collectors.toList());
+			
+			return ResponseEntity.ok(resultList);
+		}
+		
 }

@@ -11,11 +11,13 @@ import org.springframework.stereotype.Service;
 import io.hbdev.mscartoes.domain.Cartao;
 import io.hbdev.mscartoes.infra.repository.CartaoRepository;
 
+
 @Service
 public class CartaoService {
 	
 	@Autowired
-	CartaoRepository repository;
+	private CartaoRepository repository;
+
 	
 	@Transactional
 	public Cartao save(Cartao cartao) {
@@ -24,7 +26,7 @@ public class CartaoService {
 	
 	
 	//LISTA O CARTAO COM  RENDA MENOR OU = RENDA DO CLIENTE 
-	public List<Cartao> getCardRendaMenorIgual(Long renda) { 
+	public List<Cartao> getCartaoRendaMenorIgual(Long renda) { 
 		//-> RECEBE UM VALOR INTEIRO Long renda E TRANSFORMA EM BIGDECIMAL BigDecimal.valueOf(renda) = rendaBigDecimal
 		var rendaBigDecimal = BigDecimal.valueOf(renda);
 		return repository.findByRendaLessThanEqual(rendaBigDecimal);
