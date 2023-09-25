@@ -13,7 +13,7 @@ import io.hbdev.msclientes.application.representation.ClienteSaveRequest;
 import java.net.URI;
 
 @RestController
-@RequestMapping("clientes")
+@RequestMapping("/api/clientes")
 public class ClienteController {
 
 	@Autowired
@@ -21,7 +21,7 @@ public class ClienteController {
 
     @GetMapping
     public String status(){
-        return "Vikas Wrestler";
+        return "Hebert Brito e Vikas Wrestler";
     }
 
     @PostMapping
