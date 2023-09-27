@@ -24,14 +24,9 @@ public class AvaliadorController {
 	
 	@GetMapping(value = "situacao-cliente", params = "cpf")
 	public ResponseEntity<SituacaoCliente> consultasSituacaoCliente(@RequestParam("cpf") String cpf) {
-		try {
+		
 			SituacaoCliente situacaoCliente = avaliadorService.obterSituacaoCliente(cpf);
 			return ResponseEntity.ok(situacaoCliente);
-		} catch (DadosClienteNotFoundException e) {
-			return ResponseEntity.notFound().build();
-		} catch (ErrorComunicacaoMicroserviceException e) {
-			return ResponseEntity.status(HttpStatus.resolve(e.getStatus())).body(e.getMessage());
-		}	
 	}
 
 }
