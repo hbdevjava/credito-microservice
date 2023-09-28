@@ -33,6 +33,15 @@ public class ClienteController {
         return "Vikas Wrestler";
     }
 
+    @GetMapping(params = "cpf")
+    public ResponseEntity dadosCliente(@RequestParam("cpf") String cpf){
+    	var cliente = serviceClienteService.getByCPF(cpf);
+    	if(cliente.isEmpty()){
+    		return ResponseEntity.notFound().build();
+    	}
+    	return ResponseEntity.ok(cliente);
+    }
+    
     @PostMapping
     public ResponseEntity save(@RequestBody ClienteSaveRequest request){
         var cliente = request.toModel();
@@ -45,12 +54,4 @@ public class ClienteController {
         return ResponseEntity.created(headerLocation).build();
     }
 
-    @GetMapping(params = "cpf")
-    public ResponseEntity dadosCliente(@RequestParam("cpf") String cpf){
-        var cliente = serviceClienteService.getByCPF(cpf);
-        if(cliente.isEmpty()){
-        	return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(cliente);
-    }
 }

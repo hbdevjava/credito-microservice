@@ -12,6 +12,9 @@ import io.hbdev.msavaliador.domain.model.DadosCliente;
 //@FeignClient-> TB É UM CLIENTE HTTP (COMUNICAÇAO SINCRONA)
 public interface ClienteResourceClient {
 	
+	@GetMapping
+	String status();
+	
 	@GetMapping(params = "cpf")
 	ResponseEntity<DadosCliente> dadosCliente(@RequestParam("cpf") String cpf);
 }
