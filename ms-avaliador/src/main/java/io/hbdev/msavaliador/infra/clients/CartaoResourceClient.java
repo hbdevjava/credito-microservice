@@ -7,7 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import io.hbdev.msavaliador.domain.model.Cartao;
 import io.hbdev.msavaliador.domain.model.CartaoCliente;
+
+
 
 
 
@@ -18,5 +21,7 @@ public interface CartaoResourceClient {
 		@GetMapping("cpf")
 		ResponseEntity<List<CartaoCliente>> getCartoesByCliente(@RequestParam("cpf")  String cpf);
 		
+		@GetMapping(params = "renda")
+		ResponseEntity<List<Cartao>> getCartoesRendaAteh(@RequestParam Long renda);
 		
 	}
