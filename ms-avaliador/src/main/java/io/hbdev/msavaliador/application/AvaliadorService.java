@@ -2,6 +2,7 @@ package io.hbdev.msavaliador.application;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +12,19 @@ import org.springframework.stereotype.Service;
 
 import feign.FeignException;
 import io.hbdev.msavaliador.application.ex.DadosClienteNotFoundException;
+import io.hbdev.msavaliador.application.ex.ErroSolicitaçaoCartaoException;
 import io.hbdev.msavaliador.application.ex.ErrorComunicacaoMicroserviceException;
 import io.hbdev.msavaliador.domain.model.Cartao;
 import io.hbdev.msavaliador.domain.model.CartaoAprovado;
 import io.hbdev.msavaliador.domain.model.CartaoCliente;
 import io.hbdev.msavaliador.domain.model.DadosCliente;
+import io.hbdev.msavaliador.domain.model.DadosSolicitacaoEmissaoCartao;
+import io.hbdev.msavaliador.domain.model.ProtocoloSolicitaçaoCartao;
 import io.hbdev.msavaliador.domain.model.RetornoAvaliacaoCliente;
 import io.hbdev.msavaliador.domain.model.SituacaoCliente;
 import io.hbdev.msavaliador.infra.clients.CartaoResourceClient;
 import io.hbdev.msavaliador.infra.clients.ClienteResourceClient;
+import io.hbdev.msavaliador.infra.mq.SolicitaçaoEmissaoCartaoPublisher;
 
 @Service
 public class AvaliadorService {
@@ -29,6 +34,9 @@ public class AvaliadorService {
 
 	@Autowired
 	private CartaoResourceClient cartaoClient;
+	
+	@Autowired
+	private SolicitaçaoEmissaoCartaoPublisher emissaoCartaoPublisher;
 
 	public SituacaoCliente obterSituacaoCliente(String cpf)
 			throws DadosClienteNotFoundException, ErrorComunicacaoMicroserviceException {
@@ -85,4 +93,20 @@ public class AvaliadorService {
 			throw new ErrorComunicacaoMicroserviceException(e.getMessage(), status);
 		}
 	}
+	
+	public ProtocoloSolicitaçaoCartao solicitarEmissaoCartao(DadosSolicitacaoEmissaoCartao dados) {
+		try {
+			emissaoCartaoPublisher.solicitacaoCartao(dados);
+			//GERA UM NUMERO DE PROTOCOLO (SOMENTE ILUSTRATIVO);
+			//-> NUMERO DE PROTOCOLO ALEATORIO	
+			var protocolo = UUID.randomUUID().toString();
+			return new ProtocoloSolicitaçaoCartao(protocolo);
+		}catch (Exception e) {
+			//ELE LANÇA ESSA EXCEPTION CASO ELE NAO CONSIGA CONVERTER OS DADOS(STRING)
+			//OU CASO O RABBITMQ ESTEJA OFFLINE;
+			throw new ErroSolicitaçaoCartaoException(e.getMessage());
+		}
+		
+	}	
+		
 }

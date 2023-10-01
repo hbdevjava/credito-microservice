@@ -31,7 +31,6 @@
     <fullyQualifiedTypeName name="feign.FeignException"/>
     <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
     <fullyQualifiedTypeName name="java.math.BigDecimal"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="io.hbdev.msavaliador.infra.clients.CartaoResourceClient"/>
     <fullyQualifiedTypeName name="io.hbdev.msavaliador.domain.model.Cartao"/>
     <fullyQualifiedTypeName name="io.hbdev.msavaliador.domain.model.CartaoCliente"/>
@@ -40,12 +39,17 @@
     <fullyQualifiedTypeName name="io.hbdev.msavaliador.application.ex.DadosClienteNotFoundException"/>
     <fullyQualifiedTypeName name="io.hbdev.msavaliador.application.ex.ErrorComunicacaoMicroserviceException"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
-    <fullyQualifiedTypeName name="lombok.Data"/>
-    <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
-    <fullyQualifiedTypeName name="org.springframework.amqp.core.Queue"/>
     <fullyQualifiedTypeName name="lombok.Value"/>
-    <fullyQualifiedTypeName name="org.springframework.amqp.rabbit.annotation.EnableRabbit"/>
     <fullyQualifiedTypeName name="io.hbdev.mscartoes.infra.repository.CartaoRepository"/>
     <fullyQualifiedTypeName name="io.hbdev.mscartoes.infra.repository.ClienteCartaoRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.rabbit.annotation.EnableRabbit"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.rabbit.core.RabbitTemplate"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.core.Queue"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.core.JsonProcessingException"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectMapper"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="io.hbdev.msavaliador.infra.mq.SolicitaçaoEmissaoCartaoPublisher"/>
 </qualifiedTypeNameHistroy>

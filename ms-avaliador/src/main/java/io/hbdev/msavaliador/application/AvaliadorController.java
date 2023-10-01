@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.hbdev.msavaliador.application.ex.DadosClienteNotFoundException;
+import io.hbdev.msavaliador.application.ex.ErroSolicitaçaoCartaoException;
 import io.hbdev.msavaliador.application.ex.ErrorComunicacaoMicroserviceException;
 import io.hbdev.msavaliador.domain.model.DadosAvaliacao;
+import io.hbdev.msavaliador.domain.model.DadosSolicitacaoEmissaoCartao;
+import io.hbdev.msavaliador.domain.model.ProtocoloSolicitaçaoCartao;
 import io.hbdev.msavaliador.domain.model.RetornoAvaliacaoCliente;
 import io.hbdev.msavaliador.domain.model.SituacaoCliente;
 
@@ -57,4 +60,41 @@ public class AvaliadorController {
 		}
 	}
 	
+	@PostMapping("solicitacao-cartao")
+	public ResponseEntity solicitandoCartao(@RequestBody DadosSolicitacaoEmissaoCartao dados) {
+		try {
+			ProtocoloSolicitaçaoCartao protocoloSolicitaçaoCartao = 
+					avaliadorService.solicitarEmissaoCartao(dados);
+			return ResponseEntity.ok(protocoloSolicitaçaoCartao);
+		} catch (ErroSolicitaçaoCartaoException e) {
+			return ResponseEntity.internalServerError().body(e.getMessage());
+		} 
+		
+		
+		
+		
+		
+		
+		
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

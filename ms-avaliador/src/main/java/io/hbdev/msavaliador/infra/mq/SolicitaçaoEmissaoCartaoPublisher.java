@@ -19,6 +19,11 @@ public class SolicitaçaoEmissaoCartaoPublisher {
 	@Autowired
 	private Queue queueEmissaoCartoes;
 	
+	// NO Publisher É FEITA A SERIALIZAÇAO (CONVERTO OS DADOS PARA JSON) -> JA NO
+	// Subscriber É FEITA A
+	// DECERIALIZAÇAO OU SEJA (POSSO DE JSON PARA DADOS)
+	
+	
 	public void solicitacaoCartao(DadosSolicitacaoEmissaoCartao dados) throws JsonProcessingException{
 		var json = convertIntoJason(dados);
 		//rabbitTemplate -> PUBLICA A MSG PRA FILA EmissaoCartoes
