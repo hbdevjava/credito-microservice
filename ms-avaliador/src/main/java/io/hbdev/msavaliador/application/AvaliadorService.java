@@ -26,31 +26,28 @@ public class AvaliadorService {
 
 	@Autowired
 	private ClienteResourceClient clienteClient;
-	
+
 	@Autowired
 	private CartaoResourceClient cartaoClient;
 
-		
 	public SituacaoCliente obterSituacaoCliente(String cpf)
 			throws DadosClienteNotFoundException, ErrorComunicacaoMicroserviceException {
 		try {
 			ResponseEntity<DadosCliente> dadosClienteResponse = clienteClient.dadosCliente(cpf);
 			ResponseEntity<List<CartaoCliente>> dadosCartaoResponse = cartaoClient.getCartoesByCliente(cpf);
 
-			return SituacaoCliente.builder()
-					.cliente(dadosClienteResponse.getBody())
-					.cartoes(dadosCartaoResponse.getBody())
-					.build();
+			return SituacaoCliente.builder().cliente(dadosClienteResponse.getBody())
+					.cartoes(dadosCartaoResponse.getBody()).build();
 		} catch (FeignException.FeignClientException e) {
 			int status = e.status();
-			if (HttpStatus.NOT_FOUND.value() == status) {	
+			if (HttpStatus.NOT_FOUND.value() == status) {
 				throw new DadosClienteNotFoundException();
 			}
 			throw new ErrorComunicacaoMicroserviceException(e.getMessage(), status);
 		}
 
 	}
-	
+
 	public RetornoAvaliacaoCliente realizarAvaliacao(String cpf, Long renda)
 			throws DadosClienteNotFoundException, ErrorComunicacaoMicroserviceException {
 		try {
@@ -78,8 +75,8 @@ public class AvaliadorService {
 				return aprovado;
 		    }).collect(Collectors.toList());
 		    
-		    return new RetornoAvaliacaoCliente(listaCartoesAprovados);
-		    
+		    	return new RetornoAvaliacaoCliente(listaCartoesAprovados);
+			
 		} catch (FeignException.FeignClientException e) {
 			int status = e.status();
 			if (HttpStatus.NOT_FOUND.value() == status) {
@@ -89,13 +86,3 @@ public class AvaliadorService {
 		}
 	}
 }
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			

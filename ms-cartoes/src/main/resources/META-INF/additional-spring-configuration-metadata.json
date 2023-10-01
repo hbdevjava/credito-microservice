@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "mq.queue",
+    "type": "java.lang.String",
+    "description": "A description for 'mq.queue'"
+  },
+  {
+    "name": "mq.emissao-cartoes",
+    "type": "java.lang.String",
+    "description": "A description for 'mq.emissao-cartoes'"
+  },
+  {
+    "name": "eureka.mq.queue.emissao-cartoes",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka.mq.queue.emissao-cartoes'"
+  },
+  {
+    "name": "mq.queues",
+    "type": "java.lang.String",
+    "description": "A description for 'mq.queues'"
+  },
+  {
+    "name": "emissao-cartoes",
+    "type": "java.lang.String",
+    "description": "A description for 'emissao-cartoes'"
+  },
+  {
+    "name": "eureka.mq.queues.emissao-cartoes",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka.mq.queues.emissao-cartoes'"
+  }
+]}

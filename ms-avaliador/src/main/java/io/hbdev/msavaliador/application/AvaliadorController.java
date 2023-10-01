@@ -34,10 +34,13 @@ public class AvaliadorController {
 		try {
 			SituacaoCliente situacaoCliente = avaliadorService.obterSituacaoCliente(cpf);
 			return ResponseEntity.ok(situacaoCliente);
+			
 		} catch (DadosClienteNotFoundException e) {
 			return ResponseEntity.notFound().build();
+			
 		} catch (ErrorComunicacaoMicroserviceException e) {
 			return ResponseEntity.status(HttpStatus.resolve(e.getStatus())).body(e.getMessage());
+			
 		}	
 	}
 	

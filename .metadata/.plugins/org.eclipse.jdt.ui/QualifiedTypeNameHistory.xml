@@ -15,7 +15,6 @@
     <fullyQualifiedTypeName name="javax.persistence.Entity"/>
     <fullyQualifiedTypeName name="javax.persistence.Id"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
-    <fullyQualifiedTypeName name="io.hbdev.mscartoes.infra.repository.ClienteCartaoRepository"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="io.hbdev.mscartoes.domain.ClienteCartao"/>
     <fullyQualifiedTypeName name="io.hbdev.mscartoes.application.ClienteCartaoService"/>
@@ -42,4 +41,11 @@
     <fullyQualifiedTypeName name="io.hbdev.msavaliador.application.ex.ErrorComunicacaoMicroserviceException"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.core.Queue"/>
+    <fullyQualifiedTypeName name="lombok.Value"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.rabbit.annotation.EnableRabbit"/>
+    <fullyQualifiedTypeName name="io.hbdev.mscartoes.infra.repository.CartaoRepository"/>
+    <fullyQualifiedTypeName name="io.hbdev.mscartoes.infra.repository.ClienteCartaoRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
 </qualifiedTypeNameHistroy>
